@@ -121,7 +121,7 @@ try:
         def request(self, method, url, query_params=None, headers=None,
                 post_params=None, body=None, _preload_content=True,
                 _request_timeout=None):
-            
+
             if logging.getLogger('debugfile').getEffectiveLevel() == 9:
                 logging_file("SAVE TO FILE {} {} {}".format(url, query_params, body))
             response = super(DxApiClient, self).request(method, url, query_params, headers,
@@ -135,7 +135,7 @@ try:
 
 except ModuleNotFoundError:
     try:
-        from masking_api_53.rest import ApiException 
+        from masking_api_53.rest import ApiException
         from masking_api_53.configuration import Configuration
         from masking_api_53.api_client import ApiClient
         from masking_api_53.models.login import Login
@@ -146,7 +146,7 @@ except ModuleNotFoundError:
         from masking_api_53.api.file_download_api import FileDownloadApi
     except ModuleNotFoundError:
         print_error("You need to have at least one Masking API installed.")
-        sys.exit(1)    
+        sys.exit(1)
 
 
 
@@ -238,7 +238,7 @@ try:
         def request(self, method, url, query_params=None, headers=None,
                 post_params=None, body=None, _preload_content=True,
                 _request_timeout=None):
-            
+
             if logging.getLogger().getEffectiveLevel() == 9:
                 logging_file("SAVE TO FILE 5 {} {} {}".format(url, query_params, body))
             response = super(DxApiClient5, self).request(method, url, query_params, headers,
@@ -350,17 +350,17 @@ class DxMaskingEngine(object):
 
         self.get_session_worker(version=version)
         if self.get_version()<"6.0.0.0":
-            if is_api5:    
-                self.__logger.debug("Change API from 6 to 5") 
-                self.get_session_worker(version=5) 
+            if is_api5:
+                self.__logger.debug("Change API from 6 to 5")
+                self.get_session_worker(version=5)
             else:
                 print_error("Delphix Engine version is not supported by compiled API. Please generate SDK with proper version")
                 sys.exit(1)
 
         if self.get_version()>="6.0.0.0" and is_api6 == False:
             print_error("Delphix Engine version is not supported by compiled API. Please generate SDK with proper version")
-            sys.exit(1)         
-        
+            sys.exit(1)
+
 
 
 
@@ -377,7 +377,7 @@ class DxMaskingEngine(object):
             try:
                 self.api_client = DxApiClient(self.config)
             except NameError:
-                self.__logger.debug("No 6 libs, failing back to 5") 
+                self.__logger.debug("No 6 libs, failing back to 5")
                 self.api_client = DxApiClient5(self.config)
 
 
@@ -504,7 +504,7 @@ class DxMaskingEngine(object):
         Return timeout for query
         Tuple (connect_timeout, read_timeout)
         """
-        return (5, 15)
+        return (5, 60)
         """    enginelist = get_list_of_engines(p_engine)
 
     if enginelist is None:

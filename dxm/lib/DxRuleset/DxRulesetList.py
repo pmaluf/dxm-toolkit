@@ -72,13 +72,13 @@ class DxRulesetList(object):
         if self.__loaded_engine is None:
             self.__loaded_engine = self.__engine.get_name()
 
-        
-        if self.__loaded_engine == self.__engine.get_name() and self.__rulesetList != {}:
-           return None
-        else:
+
+        #if self.__loaded_engine == self.__engine.get_name() and self.__rulesetList != {}:
+        #   return None
+        #else:
             # delete a list as we can have multi engines
-            self.__rulesetList.clear()
-            self.__loaded_engine = self.__engine.get_name()
+        self.__rulesetList.clear()
+        self.__loaded_engine = self.__engine.get_name()
 
         DxConnectorsList(environment_name)
 
